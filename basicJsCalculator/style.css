@@ -1,0 +1,74 @@
+body {
+    background-color: rgba(192, 192, 192, 0.336);
+}
+.header {
+    text-align: center;
+    margin-top: 4%;
+}
+.wrapper {
+    margin-top: 2%;
+}
+.display {
+    border: rgba(0, 0, 0, 0.61) solid 1px;
+    font-size: 35px;
+    width: min-content;
+    height: min-content;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: none;
+    margin-bottom: none;
+}
+.calc-body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 40vh;
+    height: 40vh;
+    background-color: rgb(155, 155, 155);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: none;
+    box-shadow: green 3px 3px 5px;
+}
+.buttonN {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.buttonO {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.buttonN:hover {
+    background-color: orangered;
+    cursor: pointer
+}
+.button-text {
+    font-size: 25px;
+    font-style: italic;
+    user-select: none;
+    text-shadow: rgb(214, 208, 208) 1px 1px 2px;
+}
+.buttonO:hover {
+    background-color: orangered;
+    cursor: pointer
+}
+.button-clear {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.button-equal {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}
+.button-clear:hover {
+    background-color: orangered;
+    cursor: pointer
+}
+.button-equal:hover {
+    background-color: orangered;
+    cursor: pointer
+}

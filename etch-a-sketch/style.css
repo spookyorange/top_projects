@@ -1,0 +1,13 @@
+.header {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.btn {
+    background-color: rgb(141, 228, 187);
+    border: black solid 1px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%
+}

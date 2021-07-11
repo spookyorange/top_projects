@@ -1,0 +1,122 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.header {
+    height: 36px;
+    display: flex;
+    flex-direction:row-reverse;
+    align-items: center;
+}
+.header-span {
+    font-size: 13px;
+}
+.header-div {
+    margin: 0.5em;
+}
+.header-span:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.helink {
+    color: black;
+    text-decoration: none;
+}
+.helink:hover {
+    color: black;
+}
+.main-image-google {
+    display: flex;
+    margin-top: 15%;
+    justify-content: center;
+}
+.sbar {
+    display: flex;
+    margin: auto;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.input-search {
+    border-style: solid;
+    border-color:rgba(144, 133, 133, 0.219);
+    box-shadow: none;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    width: 600px;
+    height: 45px;
+}
+.input-search:focus {
+    outline: none;
+}
+.input-search:hover {
+    box-shadow: 2px 2px 4px rgba(204, 201, 201, 0.924);
+}
+.buttons-bg {
+    display: flex;
+    margin: 0;
+    margin-top: 15px;
+    justify-content: center;
+}
+.buttons-search {
+    margin-left: 35px;
+    position: relative;
+    right: 30px;
+    margin-top: 15px;
+}
+.ara {
+    height: 38px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(204, 201, 201, 0.2);
+}
+.ara:hover {
+    cursor: pointer;
+    border: rgba(46, 45, 45, 0.219) solid 1px;
+}
+.footer a {
+    color:rgba(53, 52, 52, 0.842)
+}
+.basediv {
+    width: 50%;
+    height: 50px;
+    background-color: rgba(212, 207, 207, 0.246);
+    border-top: solid rgba(204, 201, 201, 0.664) 1px;
+    display: inline-block;
+    position: absolute;
+    bottom: 0%;
+    left: 0%; 
+}
+.abyss-div {
+    display: inline-flex;
+    height: 50px;
+    width: fit-content;
+    align-items: center;
+}
+.abyss-text {
+    font-size: 14px;
+    margin: 20px;
+    margin-bottom: none;
+    padding: auto;
+}
+.abyss-st-first {
+    margin-left: 35px;
+}
+.abyss-rew {
+    width: 50%;
+    height: 50px;
+    background-color: rgba(212, 207, 207, 0.246);
+    border-top: rgba(204, 201, 201, 0.664) 1px solid;
+    display: inline-block;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    text-align: right;
+}
+.abyss-st-last {
+    margin-right: 35px;
+}
+.abyss-div:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,32 @@
+For Mastermind origin or some formal documents : https://en.wikipedia.org/wiki/Mastermind_(board_game)
+
+
+Game is a computer version of a board game named Mastermind
+Game has 2 versions mastermind.rb and mastermind_g.rb
+
+1) mastermind version )
+
+Computer generates a random colors
+You take guesses and try to find the right combination in 12 tries
+After each turn computer will give you something like ["!", "*", "*", "o"]
+! means you found one in right peg and right color (but computer doesn't say which one)
+* means color is right but peg is wrong (but computer doesn't say which one)
+o means color is not included (but computer doesn't say which one)
+
+Tries must be like gygp or something like that, straightforward 4 char answers
+One color might be in multiple pegs
+After each game terminal will print the answers and game closes.
+Have fun !
+
+2) mastermind_g version )
+
+You generate random colors
+Computer takes guesses and try to find the right combination in 12 turns
+Each turn computer will guess something like ["o", "p", "g", "y"]
+After each turn you will give computer information about how powerful that guess was
+! means correct
+o means incorrect
+
+You need to give computer results straightforward: like !o!!
+One color might be in multiple pegs
+Have fun !

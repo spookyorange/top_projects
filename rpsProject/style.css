@@ -1,0 +1,74 @@
+body {
+    background-color: aqua;
+}
+.main-header {
+    text-align: center;
+    padding-top: 40px;
+    color: rgb(1, 99, 1);
+    font-size: 48px;
+}
+#main-div {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding-top: 100px;
+    display: flex;
+    align-content: space-between;
+}
+button {
+    background-color: rgba(2, 2, 172, 0.678);
+    border: none;
+    height: 300px;
+    width: 300px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+button:hover {
+    animation-name: buttonChange;
+    animation-duration: 2s;
+    background-color: rgba(2, 2, 95, 0.678);
+    cursor: pointer;
+}
+@keyframes buttonChange {
+    0% {
+        background-color: rgba(2, 2, 172, 0.678);
+    }
+    100% {
+        background-color: rgba(2, 2, 95, 0.678);
+    }
+}
+.image {
+    width: 250px;
+    height: 250px;
+}
+.cent {
+    text-align: center;
+}
+.announcement {
+    position: absolute;
+    top: 70%;
+    left: 40%;
+}
+.count-player {
+    position: absolute;
+    top: 80%;
+    left: 48%;
+    display: inline;
+}
+.count-computer {
+    position: absolute;
+    top: 80%;
+    left: 52%;
+    display: inline;
+}
+.x {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    display: inline;
+}
+.winner {
+    position: absolute;
+    top: 85%;
+    left: 40%;
+}
