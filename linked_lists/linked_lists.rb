@@ -12,18 +12,17 @@ end
 
 class LinkedList
   def initialize
-    @tail = Node.new
+    @end = Node.new
+    @tail = Node.new(nil, @end)
     @head = Node.new(nil, @tail)
   end
 
   def append(value)
-    if @head.value.nil?
-      @head = Node.new(value, @tail)
-    elsif @head.next_node.value.nil?
-      @tail = Node.new(value, nil)
-      @head.next_node = @tail
+    if @tail.value.nil?
+      @head = Node.new(value, @end)
+      @tail = @head
     else
-      @new_tail = Node.new(value, nil)
+      @new_tail = Node.new(value, @end)
       @tail.next_node = @new_tail
       @tail = @new_tail
     end
@@ -31,29 +30,37 @@ class LinkedList
   
   def prepend(value)
     if @head.value.nil?
-      if @tail.value.nil?
-        @head = Node.new(value)
-      else
-        @head = Node.new(value, @tail)
-      end
+      @head = Node.new(value, @end)
+    elsif @head.next_node == @end
+      @tail = Node.new(value, @end)
+      @head.next_node = @tail
     else
-      @new_head = Node.new(value)
-      @new_head.next_node = @head
+      @new_head = Node.new(value, @head)
       @head = @new_head
     end
   end
 
   def info
     until @head.nil?
-      puts @head.value
-      @head = @head.next_node
+      if @head == @end
+        return
+      else
+        puts @head.value
+        @head = @head.next_node
+      end
     end
   end
 end
 
 list = LinkedList.new
-list.append('haha')
-list.prepend('three')
-list.prepend('two')
-list.prepend('one')
+
+list.append('y')
+list.append('p')
+list.prepend('a')
+list.prepend('k')
+
+list.prepend('1')
+list.prepend('first')
+list.append('last')
+
 list.info
