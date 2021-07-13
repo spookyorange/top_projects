@@ -15,6 +15,7 @@ class LinkedList
     @end = Node.new
     @tail = Node.new(nil, @end)
     @head = Node.new(nil, @tail)
+    @size = 0
   end
 
   def append(value)
@@ -26,8 +27,9 @@ class LinkedList
       @tail.next_node = @new_tail
       @tail = @new_tail
     end
+    @size += 1
   end
-  
+
   def prepend(value)
     if @head.value.nil?
       @head = Node.new(value, @end)
@@ -38,29 +40,88 @@ class LinkedList
       @new_head = Node.new(value, @head)
       @head = @new_head
     end
+    @size += 1
+  end
+
+  def size
+    puts @size
+  end
+
+  def head
+    puts @head.value
+  end
+
+  def tail
+    puts @tail.value
+  end
+
+  def at(index)
+    i = 0
+    while i < index
+      @pointer = @head.next_node
+      i += 1
+    end
+    puts @pointer.value
+  end
+
+  def pop
+    i = 0
+    while i < (@size - 1)
+      @pointer = @head.next_node
+      i += 1
+    end
+    @end = @tail
+    @end.next_node = nil
+    @tail = @pointer
+    @tail.next_node = @end
+    @size -= 1
+  end
+
+  def contains(value)
+    i = 0
+    @pointer = @head
+    while i < @size
+      return true if @pointer.value == value
+
+      @pointer = @pointer.next_node
+      i += 1
+    end
+    false
+  end
+
+  def find(value)
+    i = 0
+    @pointer = @head
+    while i < @size
+      return i if @pointer.value == value
+
+      @pointer = @pointer.next_node
+      i += 1
+    end
+    false
+  end
+
+  def to_s
+    i = 0
+    @pointer = @head
+    print "\n"
+    while i < @size
+      print "(#{@pointer.value}) => "
+      @pointer = @pointer.next_node
+      i += 1
+    end
+    print "\n"
   end
 
   def info
-    until @head.nil?
-      if @head == @end
+    @pointer = @head
+    until @pointer.nil?
+      if @pointer == @end
         return
       else
-        puts @head.value
-        @head = @head.next_node
+        puts @pointer.value
+        @pointer = @pointer.next_node
       end
     end
   end
 end
-
-list = LinkedList.new
-
-list.append('y')
-list.append('p')
-list.prepend('a')
-list.prepend('k')
-
-list.prepend('1')
-list.prepend('first')
-list.append('last')
-
-list.info
