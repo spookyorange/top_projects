@@ -39,21 +39,16 @@ class Tree
     return if pointer.root == value
     #if value bigger
     if value > pointer.root
-      if pointer.right.nil?
-        pointer.right = Node.new(value, nil, nil)
-        puts pointer.root
-        puts pointer.right.root
+      if pointer.right == nil
+        return pointer.right = Node.new(value, nil, nil)
       else
-        pointer = pointer.right
-        self.insert(value, pointer)
+        self.insert(value, pointer.right)
       end
-    #if value lesser
     else
-      if pointer.left.nil?
-        pointer.left = Node.new(value, nil, nil)
+      if pointer.left == nil
+        return pointer.left = Node.new(value, nil, nil)
       else
-        pointer = pointer.right
-        self.insert(value, pointer)
+        self.insert(value, pointer.left)
       end
     end
   end
@@ -70,4 +65,4 @@ tree = Tree.new(my_array)
 tree.build_tree(tree.array, 0, tree.array.length-1)
 tree.insert(25)
 
-puts tree.root
+puts tree.root.right.left.right.right.root
