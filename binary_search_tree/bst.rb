@@ -56,26 +56,36 @@ class Tree
 
   def delete(value, pointer = @a, bef = @a)
     if value == pointer.root
-      if (pointer.right.nil? && pointer.left.nil?)
+      if pointer.right.nil? && pointer.left.nil?
         if bef.root < pointer.root
           bef.right = nil
-          return
         else
           bef.left = nil
-          return
         end
-      elsif ((pointer.right.nil?) && !(pointer.left.nil?))
+        return
+      elsif pointer.right.nil? && !pointer.left.nil?
         if bef.root > pointer.root
           bef.left = pointer.left
         else
           bef.right = pointer.left
         end
-      elsif (!(pointer.right.nil?) && (pointer.left.nil?))
+        return
+      elsif !pointer.right.nil? && pointer.left.nil?
         if bef.root > pointer.root
           bef.left = pointer.right
         else
           bef.right = pointer.right
         end
+        return
+      else
+        if !pointer.right.left.nil?
+          pointer.root = pointer.right.left.root
+          pointer.right.left = nil
+        else
+          pointer.root = pointer.left.right.root
+          pointer.left.right = nil
+        end
+        return
       end
     end
     if value < pointer.root
@@ -89,5 +99,5 @@ end
 my_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree = Tree.new(my_array)
 tree.build_tree(tree.array, 0, tree.array.length - 1)
-tree.delete(7)
-puts tree.root.left.right.root
+tree.delete(67)
+puts tree.root.right.left.right.root
