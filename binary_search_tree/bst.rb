@@ -179,10 +179,33 @@ class Tree
       end
     end
   end
+
+  def balanced?(pointer = @a)
+    return if pointer.left.nil? && pointer.right.nil?
+    if height(pointer.right) - height(pointer.left) > 1
+      return false
+    elsif height(pointer.left) - height(pointer.right) > 1
+      return false
+    else
+      balanced?(pointer.left) if !pointer.left.nil?
+      balanced?(pointer.right) if !pointer.right.nil?
+    end
+    return true
+  end
   
+  def rebalance(pointer = @a)
+    build_tree(level_order, 0, level_order.length - 1)
+  end
+
 end
 
 my_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree = Tree.new(my_array)
 tree.build_tree(tree.array, 0, tree.array.length - 1)
-puts tree.depth(tree.root.right.right.right)
+tree.insert(-34)
+tree.insert(-2)
+tree.insert(-65)
+tree.insert(-845)
+puts tree.root.right.root
+tree.rebalance
+puts tree.balanced?
