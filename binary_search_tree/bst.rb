@@ -148,11 +148,41 @@ class Tree
     all.compact
   end
 
+  def height(node, count = 0)
+    return -1 if node.nil?
+    count += 1
+    if height(node.left) > height(node.right)
+      count += height(node.left)
+    elsif height(node.right) > height(node.left)
+      count += height(node.right)
+    else
+      count += height(node.left)
+    end
+    count
+  end
+
+  def depth(node, pointer = @a)
+    count = 0
+    return -1 if node == nil
+    return count if pointer.root == node.root
+    while pointer.root != node.root
+      if pointer.root > node.root
+        pointer = pointer.left
+        count += 1
+      end
+      if node.root > pointer.root
+        pointer = pointer.right
+        count += 1
+      end
+      if node.root == pointer.root
+        return count
+      end
+    end
+  end
+  
 end
 
 my_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree = Tree.new(my_array)
 tree.build_tree(tree.array, 0, tree.array.length - 1)
-puts tree.inorder
-puts tree.preorder
-puts tree.postorder
+puts tree.depth(tree.root.right.right.right)
