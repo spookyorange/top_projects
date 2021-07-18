@@ -18,6 +18,7 @@ class Tree
 
   def initialize(array)
     @array = array.uniq.sort
+    @all = []
   end
 
   def root(a = @a)
@@ -62,31 +63,26 @@ class Tree
         else
           bef.left = nil
         end
-        return
       elsif pointer.right.nil? && !pointer.left.nil?
         if bef.root > pointer.root
           bef.left = pointer.left
         else
           bef.right = pointer.left
         end
-        return
       elsif !pointer.right.nil? && pointer.left.nil?
         if bef.root > pointer.root
           bef.left = pointer.right
         else
           bef.right = pointer.right
         end
-        return
+      elsif !pointer.right.left.nil?
+        pointer.root = pointer.right.left.root
+        pointer.right.left = nil
       else
-        if !pointer.right.left.nil?
-          pointer.root = pointer.right.left.root
-          pointer.right.left = nil
-        else
-          pointer.root = pointer.left.right.root
-          pointer.left.right = nil
-        end
-        return
+        pointer.root = pointer.left.right.root
+        pointer.left.right = nil
       end
+      return
     end
     if value < pointer.root
       delete(value, pointer.left, pointer)
@@ -94,10 +90,38 @@ class Tree
       delete(value, pointer.right, pointer)
     end
   end
+
+  def find(value, pointer = @a)
+    return false if pointer.nil?
+    return pointer if pointer.root == value
+
+    if pointer.root > value
+      find(value, pointer.left)
+    else
+      pointer.root < value
+      find(value, pointer.right)
+    end
+  end
+
+  def level_order(pointer = @a)
+    queue = Array.new
+    @all << pointer
+    queue << pointer
+    while !queue.empty?
+      pointer = queue[0]
+      queue << pointer.left if !pointer.left.nil?
+      queue << pointer.right if !pointer.right.nil?
+      @all << queue[0].root
+      queue.shift
+    end
+    @all
+  end
+
 end
 
 my_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree = Tree.new(my_array)
 tree.build_tree(tree.array, 0, tree.array.length - 1)
-tree.delete(67)
-puts tree.root.right.left.right.root
+puts tree.level_order
+
+
