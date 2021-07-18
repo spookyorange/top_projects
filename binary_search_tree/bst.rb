@@ -18,7 +18,6 @@ class Tree
 
   def initialize(array)
     @array = array.uniq.sort
-    @all = []
   end
 
   def root(a = @a)
@@ -104,6 +103,7 @@ class Tree
   end
 
   def level_order(pointer = @a)
+    @all = Array.new
     queue = Array.new
     @all << pointer
     queue << pointer
@@ -114,7 +114,38 @@ class Tree
       @all << queue[0].root
       queue.shift
     end
+    @all.shift
     @all
+  end
+
+  def inorder(pointer = @a, all = Array.new)
+    return if pointer.nil?
+
+    all << inorder(pointer.left)
+    all << pointer.root
+    all << inorder(pointer.right)
+
+    all.compact
+  end
+
+  def preorder(pointer = @a, all = Array.new)
+    return if pointer.nil?
+
+    all << pointer.root
+    all << preorder(pointer.left)
+    all << preorder(pointer.right)
+
+    all.compact
+  end
+
+  def postorder(pointer = @a, all = Array.new)
+    return if pointer.nil?
+
+    all << postorder(pointer.left)
+    all << postorder(pointer.right)
+    all << pointer.root
+
+    all.compact
   end
 
 end
@@ -122,6 +153,6 @@ end
 my_array = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]
 tree = Tree.new(my_array)
 tree.build_tree(tree.array, 0, tree.array.length - 1)
-puts tree.level_order
-
-
+puts tree.inorder
+puts tree.preorder
+puts tree.postorder
