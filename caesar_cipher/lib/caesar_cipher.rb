@@ -45,7 +45,5 @@ def caesar_cipher(string, key)
     converted_string = convert(new_str, key)
     converted_string
     string_coded = converted_string.map { |ascii| ascii_to_char(ascii)}
-    puts string_coded.join("")
+    string_coded.join("")
 end
-
-caesar_cipher()
