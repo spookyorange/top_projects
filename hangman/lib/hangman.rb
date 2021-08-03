@@ -158,7 +158,7 @@ while new_game.misses.length < 6
       hangman = "haha"
     end
   if new_game.won == true
-    print "\n\nGood Job\n\n"
+    print "\n\nGood Job\n\nThe word was: #{new_game.word}\n\n"
     break
   else
     puts hangman
@@ -176,5 +176,5 @@ if new_game.misses.length == 6
                   |
       -------------"
       puts hangman
-      print "\n\nyou lost\n\n"
+      print "\n\nyou lost\n\nThe word was: #{new_game.word}\n\n"
 end
