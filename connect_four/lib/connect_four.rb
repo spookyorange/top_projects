@@ -109,6 +109,7 @@ class ConnectFour
   end
 
   def play
+    print "\n\nGAME STARTS\nplayer 1 = r\nplayer 2 = g\n\n"
     while @game_won == 0
       show_board
       input = 0
