@@ -122,7 +122,7 @@ class ConnectFour
     end
     print "\n\n"
     show_board
-    print"\n\n"
+    print"\n\nGAME OVER\n\n"
   end
 end
 
